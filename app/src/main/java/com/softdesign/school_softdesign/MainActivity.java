@@ -1,41 +1,38 @@
 package com.softdesign.school_softdesign;
 
-import android.annotation.TargetApi;
-import android.os.Build;
-import android.graphics.drawable.ColorDrawable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.view.MenuItem;
 
+import com.softdesign.school_softdesign.R;
+import com.softdesign.school_softdesign.ui.fragments.ContactsFragment;
+import com.softdesign.school_softdesign.ui.fragments.ProfileFragment;
+import com.softdesign.school_softdesign.ui.fragments.SettingsFragment;
+import com.softdesign.school_softdesign.ui.fragments.TasksFragment;
+import com.softdesign.school_softdesign.ui.fragments.TeamFragment;
 import com.softdesign.school_softdesign.utils.Lg;
 
 /**
- *  Главный класс приложения.
- *  Инициализирует основные компоненты приложения.
+ * Главный класс приложения.
+ * Инициализирует основные компоненты приложения.
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
-    Button mButtonBlue;
-    Button mButtonGreen;
-    Button mButtonRed;
     Toolbar mActionBarToolbar;
-    EditText mEditText;
-    CheckBox mCheckBox;
-    String mString;
-    TextView mTextView;
-    public static final String TOOLBAR_COLOR_KEY = "toolbar_color";
-    public static final String STATUSBAR_COLOR_KEY = "statusbar_color";
+    NavigationView mNavigationView;
+    DrawerLayout mDrawerLayout;
+    Fragment mFragment;
 
     /**
-     *  Метод инициализации необходимых полей для работы с интерфейсом приложения.
+     * Метод инициализации необходимых полей и функций для работы с интерфейсом приложения.
      *
-     *  @param savedInstanceState
+     * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,43 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         Lg.e(this.getLocalClassName(), "onCreate");
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.navigation_drawer);
+        mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
-        mButtonBlue = (Button) findViewById(R.id.button_blue);
-        mButtonGreen = (Button) findViewById(R.id.button_green);
-        mButtonRed = (Button) findViewById(R.id.button_red);
-        mEditText = (EditText) findViewById(R.id.edit_text_one);
-        mEditText = (EditText) findViewById(R.id.edit_text_two);
-        mCheckBox = (CheckBox) findViewById(R.id.checkbox_one);
-        mTextView = (TextView) findViewById(R.id.text_view);
-        mButtonBlue.setOnClickListener(this);
-        mButtonGreen.setOnClickListener(this);
-        mButtonRed.setOnClickListener(this);
-        mCheckBox.setOnClickListener(this);
         setToolbar();
-    }
-
-    /**
-     * Метод обработки нажатий.
-     *
-     * @param view
-     */
-    @Override
-    public void onClick(View view) {
-        int id = view.getId();
-        switch (id) {
-            case R.id.button_blue:
-                setColor(R.color.colorPrimary, R.color.colorPrimaryDark);
-                break;
-            case R.id.button_green:
-                setColor(R.color.green, R.color.green_dark);
-                break;
-            case R.id.button_red:
-                setColor(R.color.red, R.color.red_dark);
-                break;
-            case R.id.checkbox_one:
-                mString = mEditText.getText().toString();
-                mTextView.setText(mString);
-                break;
+        setupNavigation();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_conteiner, new ProfileFragment()).commit();
         }
     }
 
@@ -138,6 +105,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
+     * Метод создания логики пунктов меню.
+     */
+    private void setupNavigation() {
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.drawer_profile:
+                        mFragment = new ProfileFragment();
+                        break;
+                    case R.id.drawer_contacts:
+                        mFragment = new ContactsFragment();
+                        break;
+                    case R.id.drawer_tasks:
+                        mFragment = new TasksFragment();
+                        break;
+                    case R.id.drawer_team:
+                        mFragment = new TeamFragment();
+                        break;
+                    case R.id.drawer_settings:
+                        mFragment = new SettingsFragment();
+                        break;
+                }
+                if (mFragment != null) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_conteiner, mFragment).addToBackStack(null).commit();
+                }
+                mDrawerLayout.closeDrawers();
+                return false;
+            }
+        });
+    }
+
+    /**
+     * Метод вызываемый в фрагментах при нажатии на пункт меню.
+     *
+     * @param id
+     */
+    public void setSelect(int id) {
+        mNavigationView.setCheckedItem(id);
+    }
+
+    /**
      * Метод инициализации тулбара.
      */
     private void setToolbar() {
@@ -150,25 +159,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * С помощью аннотаций добавляем возможность использовать функции 21 версии андройда.
+     * Метод активации параметров загружаемого фрагмента.
+     *
+     * @param item
      */
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     /**
-     * Метод сохранения текста, цвета тулбара и статусбара при смене ориентации экрана.
+     * Метод сохранения при смене ориентации экрана.
      *
      * @param outState
      */
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         Lg.e(this.getLocalClassName(), "onSaveInstanceState");
-        outState.putString("text", mString);
-        outState.putInt(STATUSBAR_COLOR_KEY, getWindow().getStatusBarColor());
-        outState.putInt(TOOLBAR_COLOR_KEY, ((ColorDrawable) mActionBarToolbar.getBackground()).getColor());
     }
 
     /**
-     * Метод восстановления данных текста, цвета тулбара и статусбара.
+     * Метод восстановления данных.
      * Передает настройки текста и цветов в элементы активити.
      *
      * @param savedInstanceState
@@ -176,24 +189,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Lg.e(this.getLocalClassName(), "onRestoreInstanceState");
-        mString = savedInstanceState.getString("text");
-        mTextView.setText(mString);
-        setColor(savedInstanceState.getInt(TOOLBAR_COLOR_KEY), savedInstanceState.getInt(STATUSBAR_COLOR_KEY));
-    }
-
-    /**
-     * С помощью аннотаций добавляем возможность использовать функции 21 версии андройда.
-     */
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-
-    /**
-     * Метод устанавливает цвет тулбара и статусбара.
-     *
-     * @param toolbar_color
-     * @param statusbar_color
-     */
-    private void setColor(int toolbar_color, int statusbar_color) {
-        mActionBarToolbar.setBackgroundColor(this.getResources().getColor(toolbar_color));
-        getWindow().setStatusBarColor(this.getResources().getColor(statusbar_color));
     }
 }

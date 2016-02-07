@@ -4,4 +4,12 @@
     <string name="button_green">green</string>
     <string name="button_red">red</string>
     <string name="text_view">Hello world!</string>
+    <string name="drawer.profile">Профиль</string>
+    <string name="drawer.contacts">Контакты</string>
+    <string name="drawer.team">Команда</string>
+    <string name="drawer.tasks">Задачи</string>
+    <string name="drawer.settings">Настройки</string>
+    <string name="main.navigation.email">inerd-pavel@yandex.ru</string>
+    <string name="main.navigation.name">Paul Averin</string>
+    <string name="main.navigaton.phone">89170000000</string>
 </resources>
