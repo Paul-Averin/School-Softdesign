@@ -1,15 +1,35 @@
 <resources>
     <string name="app_name">School-Softdesign</string>
+
     <string name="button_blue">blue</string>
     <string name="button_green">green</string>
     <string name="button_red">red</string>
+
+    <string name="font.general">sans-serif</string>
+    <string name="font.light">sans-serif-light</string>
+    <string name="font.condensed">sans-serif-condensed</string>
+    <string name="font.thin">sans-serif-thin</string>
+    <string name="font.medium">sans-serif-medium</string>
+
     <string name="text_view">Hello world!</string>
+
     <string name="drawer.profile">Профиль</string>
     <string name="drawer.contacts">Контакты</string>
     <string name="drawer.team">Команда</string>
     <string name="drawer.tasks">Задачи</string>
     <string name="drawer.settings">Настройки</string>
+
+    <string name="profile.mobile">Мобильный телефон</string>
+    <string name="profile.email">E-mail</string>
+    <string name="profile.personal_page_link">Социальные сети</string>
+    <string name="profile.github">GitHub</string>
+    <string name="profile.about">О себе</string>
+
     <string name="main.navigation.email">inerd-pavel@yandex.ru</string>
     <string name="main.navigation.name">Paul Averin</string>
-    <string name="main.navigaton.phone">89170000000</string>
+    <string name="main.navigation.status">88</string>
+    <string name="main.navigation.phone">+7(927)00-00-00</string>
+    <string name="main.navigation.personal_page_link">https://vk.com/id39445949</string>
+    <string name="main.navigation.github">https://github.com/Paul-Averin</string>
+    <string name="main.navigation.about">Интересуюсь всем, что может повлиять на мое развитие.</string>
 </resources>

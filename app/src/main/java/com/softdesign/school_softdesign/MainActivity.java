@@ -1,5 +1,8 @@
 package com.softdesign.school_softdesign;
 
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -28,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     NavigationView mNavigationView;
     DrawerLayout mDrawerLayout;
     Fragment mFragment;
+    AppBarLayout mApplictionBar;
+    CollapsingToolbarLayout mCollapsingToolbar;
+    CoordinatorLayout mCordinator;
 
     /**
      * Метод инициализации необходимых полей и функций для работы с интерфейсом приложения.
@@ -43,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.navigation_drawer);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        mApplictionBar = (AppBarLayout) findViewById(R.id.app_bar_layout);
+        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        mCordinator = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
         setToolbar();
         setupNavigation();
         if (savedInstanceState == null) {
@@ -170,6 +179,26 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Метод вызывающийся при нажатии на кнопку "назад".
+     */
+
+    public void onBackPressed() {
+            super.onBackPressed();
+            mFragment = getSupportFragmentManager().findFragmentById(R.id.main_frame_conteiner);
+    }
+
+    public void collapsingApplicationBar(boolean collapse, String title) {
+
+        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) mApplictionBar.getLayoutParams();
+        AppBarLayout.Behavior behavior = (AppBarLayout.Behavior) params.getBehavior();
+        if (behavior != null) {
+            behavior.onNestedFling(mCordinator, mApplictionBar, null, 0, 1000, collapse);
+        }
+        mApplictionBar.setExpanded(collapse);
+        mCollapsingToolbar.setTitle(title);
+    }
+    
     /**
      * Метод сохранения при смене ориентации экрана.
      *

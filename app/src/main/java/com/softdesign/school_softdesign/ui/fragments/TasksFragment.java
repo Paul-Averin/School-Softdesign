@@ -16,9 +16,8 @@ public class TasksFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tasks, null);
-        getActivity().setTitle(getResources().getString(R.string.drawer_tasks));
-        Activity activity = getActivity();
-        ((MainActivity) activity).setSelect(R.id.drawer_tasks);
+        ((MainActivity) getActivity()).setSelect(R.id.drawer_tasks);
+        ((MainActivity) getActivity()).collapsingApplicationBar(false, getResources().getString(R.string.drawer_tasks));
         return v;
     }
 }
