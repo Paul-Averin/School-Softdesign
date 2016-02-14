@@ -21,19 +21,22 @@ import com.softdesign.school_softdesign.ui.fragments.TasksFragment;
 import com.softdesign.school_softdesign.ui.fragments.TeamFragment;
 import com.softdesign.school_softdesign.utils.Lg;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Главный класс приложения.
  * Инициализирует основные компоненты приложения.
  */
 public class MainActivity extends AppCompatActivity {
 
-    Toolbar mActionBarToolbar;
-    NavigationView mNavigationView;
-    DrawerLayout mDrawerLayout;
+    @Bind(R.id.toolbar_actionbar) Toolbar mActionBarToolbar;
+    @Bind(R.id.navigation_view) NavigationView mNavigationView;
+    @Bind(R.id.navigation_drawer) DrawerLayout mDrawerLayout;
     Fragment mFragment;
-    AppBarLayout mApplictionBar;
-    CollapsingToolbarLayout mCollapsingToolbar;
-    CoordinatorLayout mCordinator;
+    @Bind(R.id.app_bar) AppBarLayout mApplictionBar;
+    @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
+    @Bind(R.id.coordinator_layout) CoordinatorLayout mCoordinator;
 
     /**
      * Метод инициализации необходимых полей и функций для работы с интерфейсом приложения.
@@ -46,12 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Lg.e(this.getLocalClassName(), "onCreate");
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.navigation_drawer);
-        mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
-        mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
-        mApplictionBar = (AppBarLayout) findViewById(R.id.app_bar_layout);
-        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        mCordinator = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
+        ButterKnife.bind(this);
         setToolbar();
         setupNavigation();
         if (savedInstanceState == null) {
@@ -193,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) mApplictionBar.getLayoutParams();
         AppBarLayout.Behavior behavior = (AppBarLayout.Behavior) params.getBehavior();
         if (behavior != null) {
-            behavior.onNestedFling(mCordinator, mApplictionBar, null, 0, 1000, collapse);
+            behavior.onNestedFling(mCoordinator, mApplictionBar, null, 0, 1000, collapse);
         }
         mApplictionBar.setExpanded(collapse);
         mCollapsingToolbar.setTitle(title);

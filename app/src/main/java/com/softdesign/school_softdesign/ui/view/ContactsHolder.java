@@ -7,15 +7,16 @@ import android.widget.TextView;
 
 import com.softdesign.school_softdesign.R;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class ContactsHolder extends RecyclerView.ViewHolder {
 
-    public TextView mFullName;
-    public ImageView mAvatar;
+    @Bind(R.id.user_name) public TextView mFullName;
+    @Bind(R.id.user_avatar) public ImageView mAvatar;
 
     public ContactsHolder(View itemView) {
         super(itemView);
-        mFullName = (TextView) itemView.findViewById(R.id.user_name);
-        mAvatar = (ImageView) itemView.findViewById(R.id.user_avatar);
+        ButterKnife.bind(this, itemView);
     }
 }
