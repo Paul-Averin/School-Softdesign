@@ -16,9 +16,8 @@ public class TeamFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_team, null);
-        getActivity().setTitle(getResources().getString(R.string.drawer_team));
-        Activity activity = getActivity();
-        ((MainActivity) activity).setSelect(R.id.drawer_team);
+        ((MainActivity) getActivity()).setSelect(R.id.drawer_team);
+        ((MainActivity) getActivity()).collapsingApplicationBar(false, getResources().getString(R.string.drawer_team));
         return v;
     }
 }

@@ -2,12 +2,17 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
     <dimen name="toolbar_elevation">16dp</dimen>
+
     <dimen name="main_content_left_margin">16dp</dimen>
     <dimen name="main_content_top_margin">16dp</dimen>
     <dimen name="main_content_right_margin">16dp</dimen>
+    <dimen name="main_margin">16dp</dimen>
+
     <dimen name="nav_header_height">164dp</dimen>
     <dimen name="default_textSize">14sp</dimen>
+
     <dimen name="user_background_layout_height">164dp</dimen>
     <dimen name="user_photo_layout_width">64dp</dimen>
     <dimen name="user_photo_layout_height">64dp</dimen>
@@ -19,5 +24,9 @@
     <dimen name="user_name_layout_marginLeft">16dp</dimen>
     <dimen name="user_email_textSize">14sp</dimen>
     <dimen name="user_email_layout_marginLeft">16dp</dimen>
-    <dimen name="main_margin">16dp</dimen>
+
+    <dimen name="spacing.small">8dp</dimen>
+    <dimen name="spacing.large">72dp</dimen>
+    <dimen name="text.normal">16sp</dimen>
+    <dimen name="image.size">40dp</dimen>
 </resources>

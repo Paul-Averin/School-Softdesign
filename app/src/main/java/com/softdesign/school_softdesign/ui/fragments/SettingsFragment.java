@@ -16,9 +16,8 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_settings, null);
-        getActivity().setTitle(getResources().getString(R.string.drawer_settings));
-        Activity activity = getActivity();
-        ((MainActivity) activity).setSelect(R.id.drawer_settings);
+        ((MainActivity) getActivity()).setSelect(R.id.drawer_settings);
+        ((MainActivity) getActivity()).collapsingApplicationBar(false, getResources().getString(R.string.drawer_settings));
         return v;
     }
 }

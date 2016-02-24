@@ -54,7 +54,7 @@
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginTop="3dp"
-        android:text="@string/main.navigaton.phone"
+        android:text="@string/main.navigation.status"
         android:textSize="25dp" />
 
     <LinearLayout

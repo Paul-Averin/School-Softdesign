@@ -1,13 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/drawer.profile"
-        android:id="@+id/textView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+    <RelativeLayout
+        android:id="@+id/layout_number"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            style="@style/image_view"
+            android:src="@drawable/ic_phone_24dp" />
+
+        <LinearLayout style="@style/linear_layout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font.medium"
+                android:text="@string/main.navigation.phone"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font.general"
+                android:text="@string/profile.mobile"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <View style="@style/separator" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_email"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignLeft="@+id/layout_number"
+        android:layout_below="@+id/layout_number">
+
+        <ImageView
+            style="@style/image_view"
+            android:src="@drawable/email" />
+
+        <LinearLayout style="@style/linear_layout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font.medium"
+                android:text="@string/main.navigation.email"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font.general"
+                android:text="@string/profile.email"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <View style="@style/separator" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_vk"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignLeft="@+id/layout_email"
+        android:layout_below="@+id/layout_email">
+
+        <ImageView
+            style="@style/image_view"
+            android:src="@drawable/personal_page_link" />
+
+        <LinearLayout style="@style/linear_layout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font.medium"
+                android:text="@string/main.navigation.personal_page_link"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font.general"
+                android:text="@string/profile.personal_page_link"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <View style="@style/separator" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_git"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignLeft="@+id/layout_vk"
+        android:layout_below="@+id/layout_vk">
+
+        <ImageView
+            style="@style/image_view"
+            android:src="@drawable/github" />
+
+        <LinearLayout style="@style/linear_layout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font.medium"
+                android:text="@string/main.navigation.github"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font.general"
+                android:text="@string/profile.github"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <View style="@style/separator" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_about"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignLeft="@+id/layout_git"
+        android:layout_below="@+id/layout_git">
+
+        <ImageView
+            style="@style/image_view"
+            android:src="@drawable/ic_account_box_24dp" />
+
+        <LinearLayout style="@style/linear_layout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font.medium"
+                android:text="@string/main.navigation.about"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/font.general"
+                android:text="@string/profile.about"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
