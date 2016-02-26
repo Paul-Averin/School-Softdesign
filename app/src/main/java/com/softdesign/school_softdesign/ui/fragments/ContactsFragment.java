@@ -16,10 +16,13 @@ import com.softdesign.school_softdesign.ui.adapters.ContactsAdapter;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class ContactsFragment extends Fragment {
 
     ArrayList<UsersModels> mArrayUsers = new ArrayList<UsersModels>();
-    RecyclerView mListView;
+    @Bind(R.id.recycler_view) RecyclerView mListView;
     RecyclerView.LayoutManager mLayoutManager;
     ContactsAdapter mContactsAdapter;
 
@@ -30,7 +33,7 @@ public class ContactsFragment extends Fragment {
         ((MainActivity) getActivity()).setSelect(R.id.drawer_contacts);
         ((MainActivity) getActivity()).collapsingApplicationBar(false, getResources().getString(R.string.drawer_contacts));
         addData();
-        mListView = (RecyclerView) v.findViewById(R.id.recycler_view);
+        ButterKnife.bind(this, v);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mListView.setLayoutManager(mLayoutManager);
         mContactsAdapter = new ContactsAdapter(mArrayUsers);
