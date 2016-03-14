@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.navigation_view) NavigationView mNavigationView;
     @Bind(R.id.navigation_drawer) DrawerLayout mDrawerLayout;
     Fragment mFragment;
-    @Bind(R.id.app_bar) AppBarLayout mApplictionBar;
+    @Bind(R.id.app_bar_layout) AppBarLayout mApplictionBar;
     @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbar;
     @Bind(R.id.coordinator_layout) CoordinatorLayout mCoordinator;
 

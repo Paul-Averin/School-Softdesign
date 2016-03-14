@@ -25,6 +25,7 @@
     <string name="profile.github">GitHub</string>
     <string name="profile.about">О себе</string>
 
+    <string name="clear">Очистить</string>
     <string name="main.navigation.email">inerd-pavel@yandex.ru</string>
     <string name="main.navigation.name">Paul Averin</string>
     <string name="main.navigation.status">88</string>

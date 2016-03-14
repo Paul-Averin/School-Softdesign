@@ -26,7 +26,9 @@
     <dimen name="user_email_layout_marginLeft">16dp</dimen>
 
     <dimen name="spacing.small">8dp</dimen>
+    <dimen name="spacing.middle">16dp</dimen>
     <dimen name="spacing.large">72dp</dimen>
     <dimen name="text.normal">16sp</dimen>
+    <dimen name="font.middle">14sp</dimen>
     <dimen name="image.size">40dp</dimen>
 </resources>
